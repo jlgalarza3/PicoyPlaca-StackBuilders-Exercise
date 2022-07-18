@@ -51,3 +51,17 @@ const createVehicle = () => {
   const vehicle = new Vehicle(id, licencePlateNumber);
   return vehicle;
 };
+
+//Function to autoincremental the id of the objects
+const autoIncrementalIdFromTxt = () => {
+  if (validateEmptyFile()) {
+    return 1;
+  } else {
+    const vehicles = file.readFileSync("vehiclesLog.txt", "utf8");
+    const vehiclesArray = vehicles.split("\n");
+    const lastVehicle = vehiclesArray[vehiclesArray.length - 2];
+    const lastVehicleArray = lastVehicle.split(" ");
+    const lastVehicleId = parseInt(lastVehicleArray[0]);
+    return lastVehicleId + 1;
+  }
+};
