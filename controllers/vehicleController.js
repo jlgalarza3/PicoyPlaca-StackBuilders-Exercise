@@ -13,9 +13,34 @@ const requestVehicleData = () => {
   return { id, licencePlateNumber };
 };
 
-//Function to get date and time from the user
-const requestDateAndTimeData = () => {
-  const date = prompt("Date (DD/MM/YYYY): ");
-  const time = prompt("Time: (HH:MM) ");
-  return { date, time };
+//Function to get the date from the user
+const requestDate = () => {
+  const date = prompt("Date (MM/DD/YYYY): ");
+  if (!validateDateFormat(date)) {
+    console.log("Invalid date");
+    return requestDate();
+  }
+  return date;
+};
+
+//Function to get the time from the user
+const requestTime = () => {
+  const time = prompt("Time (hh:mm): ");
+  if (!validateTimeFormat(time)) {
+    console.log("Invalid Time");
+    return requestTime();
+  }
+  return time;
+};
+
+//Function to validate the date format
+const validateDateFormat = (date) => {
+  const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+  return dateRegex.test(date);
+};
+
+//Function to validate the time format
+const validateTimeFormat = (time) => {
+  const timeRegex = /^([0-1]\d|2[0-3]):([0-5]\d)$/;
+  return timeRegex.test(time);
 };
