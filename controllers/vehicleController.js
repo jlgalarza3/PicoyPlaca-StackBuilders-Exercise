@@ -44,3 +44,10 @@ const validateTimeFormat = (time) => {
   const timeRegex = /^([0-1]\d|2[0-3]):([0-5]\d)$/;
   return timeRegex.test(time);
 };
+
+//Function to create a vehicle Object
+const createVehicle = () => {
+  const { id, licencePlateNumber } = requestVehicleData();
+  const vehicle = new Vehicle(id, licencePlateNumber);
+  return vehicle;
+};
