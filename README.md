@@ -29,3 +29,43 @@ In the figure it can be seen that the Model - View - Controller (MVC) architectu
 - Validated by means of a Switch - Case sentence, in each case (1-5), corresponding to the days of the week.
 - If the last digit of the license plate coincides with the day, it will be validated if the hour is in the interval where the vehicle cannot drive: 07:00 - 9:30 and 16:00 to 18:30.
 -  If it coincides with the mentioned time interval, it will return the warning "Can not circulate", otherwise it will return "Can circulate".
+
+## 5. How to run this project:question:
+
+Make sure `node` & `npm` is installed on your system.
+
+#### 1. Open the folder in which you want to run your project
+#### 2. Open console
+#### 3. Clone this repo
+```
+   git clone https://github.com/jlgalarza3/PicoyPlaca-StackBuilders-Exercise.git
+```
+### 4. Change Directory
+```
+   cd .\PicoyPlaca-StackBuilders-Exercise\
+```
+
+### 5. Open on Visual Studio Code
+```
+   code .
+```
+### 6. Install Dependencies 
+
+> Only the jest dependency will be installed for unit testing.
+> Only prompt-sync dependency will be installed for 
+
+```
+npm install
+```
+### 7. Run Project
+```
+node .\index.js
+```
+### 8. Run Unit Tests
+```
+npm test
+```
+
+
+👉  Made with [Javascript](https://github.com/topics/javascript) 
+======
