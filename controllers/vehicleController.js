@@ -104,7 +104,7 @@ const getLastLicencePlateNumber = (licencePlateNumber) => {
 
 //Function to validate if the vehicle is in the "Pico y Placa" time interval
 const vehicleIsInTimeInterval = (time) => {
-  return (time >= "08:00" && time <= "09:30") ||
+  return (time >= "07:00" && time <= "09:30") ||
     (time >= "16:00" && time <= "18:30")
     ? canNotCirculateAdvise
     : canCirculateAdvise;
@@ -153,6 +153,7 @@ const getResult = () => {
   const dateRequesed = requestDate();
   const timeRequesed = requestTime();
   saveVehicleOnTxt(vehicleCreated);
+
   const result = calculatePicoyPlaca(
     vehicleCreated.licencePlateNumber,
     dateRequesed,
