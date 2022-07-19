@@ -10,7 +10,17 @@ const canNotCirculateAdvise = "Can not circulate";
 const requestVehicleData = () => {
   const id = autoIncrementalIdFromTxt();
   const licencePlateNumber = prompt("Licence Plate Number: ");
+  if (!validateLicencePlateNumber(licencePlateNumber)) {
+    console.log("Invalid Licence Plate Number");
+    return requestVehicleData();
+  }
   return { id, licencePlateNumber };
+};
+
+//Function to validate vehicle licencePlateNumber ECUADORIAN format
+const validateLicencePlateNumber = (licencePlateNumber) => {
+  const ecuadorianLicenceRegex = /^([A-Z]{3}-\d{3,4})$/;
+  return ecuadorianLicenceRegex.test(licencePlateNumber);
 };
 
 //Function to get the date from the user
@@ -23,6 +33,12 @@ const requestDate = () => {
   return date;
 };
 
+//Function to validate the date format
+const validateDateFormat = (date) => {
+  const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+  return dateRegex.test(date);
+};
+
 //Function to get the time from the user
 const requestTime = () => {
   const time = prompt("Time (hh:mm): ");
@@ -31,12 +47,6 @@ const requestTime = () => {
     return requestTime();
   }
   return time;
-};
-
-//Function to validate the date format
-const validateDateFormat = (date) => {
-  const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-  return dateRegex.test(date);
 };
 
 //Function to validate the time format
@@ -160,7 +170,7 @@ const getResult = () => {
   return result;
 };
 
-//getResult();
+getResult();
 
 module.exports = {
   calculatePicoyPlaca,
