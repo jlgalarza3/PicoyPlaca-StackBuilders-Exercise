@@ -131,3 +131,20 @@ const calculatePicoyPlaca = (dayOfTheWeek, lastLicencePlateNumber, time) => {
     }
   }
 };
+
+//Union of functions and return of the result
+const getResult = () => {
+  const vehicleCreated = createVehicle();
+  const dateRequesed = requestDate();
+  const timeRequesed = requestTime();
+  saveVehicleOnTxt(vehicleCreated);
+  const lastLicencePlateNumber = getLastLicencePlateNumber(vehicleCreated);
+  const dayOfTheWeek = getDayOfTheWeekFromDate(dateRequesed);
+  return calculatePicoyPlaca(
+    dayOfTheWeek,
+    lastLicencePlateNumber,
+    timeRequesed
+  );
+};
+
+getResult();
