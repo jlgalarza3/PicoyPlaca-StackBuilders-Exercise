@@ -65,3 +65,20 @@ const autoIncrementalIdFromTxt = () => {
     return lastVehicleId + 1;
   }
 };
+
+//Function to validate if the txt file is empty
+const validateEmptyFile = () => {
+  const vehicles = file.readFileSync("vehiclesLog.txt", "utf8");
+  if (vehicles === "") {
+    return true;
+  }
+  return false;
+};
+
+//Function to save Vehicle id and licencePlateNumber on txt file
+const saveVehicleOnTxt = (vehicle) => {
+  file.appendFileSync(
+    "vehiclesLog.txt",
+    `${vehicle.id} ${vehicle.licencePlateNumber}\n`
+  );
+};
