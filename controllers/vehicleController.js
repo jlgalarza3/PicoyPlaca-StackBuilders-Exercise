@@ -89,6 +89,12 @@ const getDayOfTheWeekFromDate = (date) => {
   return dateTime.getDay();
 };
 
+//Function to get the last licencePlateNumber of the vehicle
+const getLastLicencePlateNumber = (licencePlateNumber) => {
+  const lastLicencePlateNumber = licencePlateNumber.slice(-1);
+  return lastLicencePlateNumber;
+};
+
 //Function to validate if the vehicle is in the "Pico y Placa" time interval
 const vehicleIsInTimeInterval = (time) => {
   if (
@@ -102,7 +108,14 @@ const vehicleIsInTimeInterval = (time) => {
 };
 
 //Function for calculating "Pico y placa" according the day of the week
-const calculatePicoyPlaca = (dayOfTheWeek, lastLicencePlateNumber, time) => {
+const calculatePicoyPlaca = (
+  licencePlateNumber,
+  dateRequesed,
+  timeRequesed
+) => {
+  const dayOfTheWeek = getDayOfTheWeekFromDate(dateRequesed);
+  const lastLicencePlateNumber = getLastLicencePlateNumber(licencePlateNumber);
+
   //Day of the week: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday
   if (dayOfTheWeek === 0 || dayOfTheWeek === 6) {
     return canCirculateAdvise;
@@ -110,23 +123,23 @@ const calculatePicoyPlaca = (dayOfTheWeek, lastLicencePlateNumber, time) => {
     switch (dayOfTheWeek) {
       case 1:
         return lastLicencePlateNumber === "1" || lastLicencePlateNumber === "2"
-          ? vehicleIsInTimeInterval(time)
+          ? vehicleIsInTimeInterval(timeRequesed)
           : canCirculateAdvise;
       case 2:
         return lastLicencePlateNumber === "3" || lastLicencePlateNumber === "4"
-          ? vehicleIsInTimeInterval(time)
+          ? vehicleIsInTimeInterval(timeRequesed)
           : canCirculateAdvise;
       case 3:
         return lastLicencePlateNumber === "5" || lastLicencePlateNumber === "6"
-          ? vehicleIsInTimeInterval(time)
+          ? vehicleIsInTimeInterval(timeRequesed)
           : canCirculateAdvise;
       case 4:
         return lastLicencePlateNumber === "7" || lastLicencePlateNumber === "8"
-          ? vehicleIsInTimeInterval(time)
+          ? vehicleIsInTimeInterval(timeRequesed)
           : canCirculateAdvise;
       case 5:
         return lastLicencePlateNumber === "9" || lastLicencePlateNumber === "0"
-          ? vehicleIsInTimeInterval(time)
+          ? vehicleIsInTimeInterval(timeRequesed)
           : canCirculateAdvise;
     }
   }
@@ -138,13 +151,14 @@ const getResult = () => {
   const dateRequesed = requestDate();
   const timeRequesed = requestTime();
   saveVehicleOnTxt(vehicleCreated);
-  const lastLicencePlateNumber = getLastLicencePlateNumber(vehicleCreated);
-  const dayOfTheWeek = getDayOfTheWeekFromDate(dateRequesed);
-  return calculatePicoyPlaca(
-    dayOfTheWeek,
-    lastLicencePlateNumber,
+
+  const result = calculatePicoyPlaca(
+    vehicleCreated.licencePlateNumber,
+    dateRequesed,
     timeRequesed
   );
+  console.log(result);
+  return result;
 };
 
 getResult();
