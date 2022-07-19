@@ -79,10 +79,7 @@ const autoIncrementalIdFromTxt = () => {
 //Function to validate if the txt file is empty
 const validateEmptyFile = () => {
   const vehicles = file.readFileSync("vehiclesLog.txt", "utf8");
-  if (vehicles === "") {
-    return true;
-  }
-  return false;
+  return vehicles === "" ? true : false;
 };
 
 //Function to save Vehicle id and licencePlateNumber on txt file
@@ -107,14 +104,10 @@ const getLastLicencePlateNumber = (licencePlateNumber) => {
 
 //Function to validate if the vehicle is in the "Pico y Placa" time interval
 const vehicleIsInTimeInterval = (time) => {
-  if (
-    (time >= "08:00" && time <= "09:30") ||
+  return (time >= "08:00" && time <= "09:30") ||
     (time >= "16:00" && time <= "18:30")
-  ) {
-    return canNotCirculateAdvise;
-  } else {
-    return canCirculateAdvise;
-  }
+    ? canNotCirculateAdvise
+    : canCirculateAdvise;
 };
 
 //Function for calculating "Pico y placa" according the day of the week
@@ -160,7 +153,6 @@ const getResult = () => {
   const dateRequesed = requestDate();
   const timeRequesed = requestTime();
   saveVehicleOnTxt(vehicleCreated);
-
   const result = calculatePicoyPlaca(
     vehicleCreated.licencePlateNumber,
     dateRequesed,
