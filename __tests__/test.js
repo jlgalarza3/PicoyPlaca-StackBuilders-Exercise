@@ -87,3 +87,21 @@ describe("Friday cases with licence plate number 9-0", () => {
     }
   );
 });
+
+//Must return the correct message on weekend cases
+const weekendCases = [
+  ["PBC-8739", "07/23/2022", "16:03", "Can circulate"],
+  ["PBC-8730", "07/24/2022", "21:15", "Can circulate"],
+  ["PBC-8735", "07/23/2022", "08:30", "Can circulate"],
+  ["PBC-8732", "07/24/2022", "07:15", "Can circulate"],
+  ["PBC-8737", "07/23/2022", "13:00", "Can circulate"],
+];
+describe("Weekend cases with any licence plate number", () => {
+  test.each(weekendCases)(
+    "Given the vehicle with licence plate number %p at %p at %p, the vehicle: %p",
+    (licencePlateNumber, date, time, expectedResult) => {
+      const result = calculatePicoyPlaca(licencePlateNumber, date, time);
+      expect(result).toEqual(expectedResult);
+    }
+  );
+});
