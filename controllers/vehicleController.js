@@ -3,8 +3,8 @@ const prompt = require("prompt-sync")();
 const file = require("fs");
 
 //Constant results
-const canCirculateAdvise = "Puede circular";
-const canNotCirculateAdvise = "No puede circular";
+const canCirculateAdvise = "Can circulate";
+const canNotCirculateAdvise = "Can not circulate";
 
 //Function to get the vehicle data from the user
 const requestVehicleData = () => {
@@ -115,7 +115,6 @@ const calculatePicoyPlaca = (
 ) => {
   const dayOfTheWeek = getDayOfTheWeekFromDate(dateRequesed);
   const lastLicencePlateNumber = getLastLicencePlateNumber(licencePlateNumber);
-
   //Day of the week: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday
   if (dayOfTheWeek === 0 || dayOfTheWeek === 6) {
     return canCirculateAdvise;
@@ -161,4 +160,8 @@ const getResult = () => {
   return result;
 };
 
-getResult();
+//getResult();
+
+module.exports = {
+  calculatePicoyPlaca,
+};
