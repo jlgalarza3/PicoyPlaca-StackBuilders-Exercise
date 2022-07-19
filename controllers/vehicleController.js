@@ -82,3 +82,9 @@ const saveVehicleOnTxt = (vehicle) => {
     `${vehicle.id} ${vehicle.licencePlateNumber}\n`
   );
 };
+
+//Function to get the day of the week from the date
+const getDayOfTheWeekFromDate = (date) => {
+  const dateTime = new Date(date);
+  return dateTime.getDay();
+};
