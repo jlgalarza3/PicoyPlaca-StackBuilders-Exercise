@@ -88,3 +88,46 @@ const getDayOfTheWeekFromDate = (date) => {
   const dateTime = new Date(date);
   return dateTime.getDay();
 };
+
+//Function to validate if the vehicle is in the "Pico y Placa" time interval
+const vehicleIsInTimeInterval = (time) => {
+  if (
+    (time >= "08:00" && time <= "09:30") ||
+    (time >= "16:00" && time <= "18:30")
+  ) {
+    return canNotCirculateAdvise;
+  } else {
+    return canCirculateAdvise;
+  }
+};
+
+//Function for calculating "Pico y placa" according the day of the week
+const calculatePicoyPlaca = (dayOfTheWeek, lastLicencePlateNumber, time) => {
+  //Day of the week: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday
+  if (dayOfTheWeek === 0 || dayOfTheWeek === 6) {
+    return canCirculateAdvise;
+  } else {
+    switch (dayOfTheWeek) {
+      case 1:
+        return lastLicencePlateNumber === "1" || lastLicencePlateNumber === "2"
+          ? vehicleIsInTimeInterval(time)
+          : canCirculateAdvise;
+      case 2:
+        return lastLicencePlateNumber === "3" || lastLicencePlateNumber === "4"
+          ? vehicleIsInTimeInterval(time)
+          : canCirculateAdvise;
+      case 3:
+        return lastLicencePlateNumber === "5" || lastLicencePlateNumber === "6"
+          ? vehicleIsInTimeInterval(time)
+          : canCirculateAdvise;
+      case 4:
+        return lastLicencePlateNumber === "7" || lastLicencePlateNumber === "8"
+          ? vehicleIsInTimeInterval(time)
+          : canCirculateAdvise;
+      case 5:
+        return lastLicencePlateNumber === "9" || lastLicencePlateNumber === "0"
+          ? vehicleIsInTimeInterval(time)
+          : canCirculateAdvise;
+    }
+  }
+};
