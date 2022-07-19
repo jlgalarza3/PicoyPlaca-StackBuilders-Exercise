@@ -166,12 +166,10 @@ const getResult = () => {
     dateRequesed,
     timeRequesed
   );
-  console.log(result);
   return result;
 };
 
-getResult();
-
 module.exports = {
   calculatePicoyPlaca,
+  getResult,
 };
