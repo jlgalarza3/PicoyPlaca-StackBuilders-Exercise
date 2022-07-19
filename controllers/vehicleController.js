@@ -9,7 +9,7 @@ const canNotCirculateAdvise = "Can not circulate";
 //Function to get the vehicle data from the user
 const requestVehicleData = () => {
   const id = autoIncrementalIdFromTxt();
-  const licencePlateNumber = prompt("Licence Plate Number: ");
+  const licencePlateNumber = prompt("Licence Plate Number (XXX-0000): ");
   if (!validateLicencePlateNumber(licencePlateNumber)) {
     console.log("Invalid Licence Plate Number");
     return requestVehicleData();
