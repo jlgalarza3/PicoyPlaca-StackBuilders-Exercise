@@ -52,7 +52,7 @@ Make sure `node` & `npm` is installed on your system.
 ### 6. Install Dependencies 
 
 > Only the jest dependency will be installed for unit testing.
-> Only prompt-sync dependency will be installed for 
+> Only prompt-sync dependency will be installed to request data
 
 ```
 npm install
