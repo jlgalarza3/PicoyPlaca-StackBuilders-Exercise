@@ -41,16 +41,16 @@ Make sure `node` & `npm` is installed on your system.
 ```
    git clone https://github.com/jlgalarza3/PicoyPlaca-StackBuilders-Exercise.git
 ```
-### 4. Change Directory
+#### 4. Change Directory
 ```
    cd .\PicoyPlaca-StackBuilders-Exercise\
 ```
 
-### 5. Open on Visual Studio Code
+#### 5. Open on Visual Studio Code
 ```
    code .
 ```
-### 6. Install Dependencies 
+#### 6. Install Dependencies 
 
 > Only the jest dependency will be installed for unit testing.
 > Only prompt-sync dependency will be installed to request data
@@ -58,11 +58,11 @@ Make sure `node` & `npm` is installed on your system.
 ```
 npm install
 ```
-### 7. Run Project
+#### 7. Run Project
 ```
 node .\index.js
 ```
-### 8. Run Unit Tests
+#### 8. Run Unit Tests
 ```
 npm test
 ```
