@@ -83,11 +83,9 @@ const validateEmptyFile = () => {
 };
 
 //Function to save Vehicle id and licencePlateNumber on txt file
-const saveVehicleOnTxt = (vehicle) => {
-  file.appendFileSync(
-    "vehiclesLog.txt",
-    `${vehicle.id} ${vehicle.licencePlateNumber}\n`
-  );
+const saveVehicleDataOnTxt = (vehicle, date, time, result) => {
+  const vehicleData = `${vehicle.id} ${vehicle.licencePlateNumber} ${date} ${time} ${result}\n`;
+  file.appendFileSync("vehiclesLog.txt", vehicleData);
 };
 
 //Function to get the day of the week from the date
@@ -152,13 +150,12 @@ const getResult = () => {
   const vehicleCreated = createVehicle();
   const dateRequesed = requestDate();
   const timeRequesed = requestTime();
-  saveVehicleOnTxt(vehicleCreated);
-
   const result = calculatePicoyPlaca(
     vehicleCreated.licencePlateNumber,
     dateRequesed,
     timeRequesed
   );
+  saveVehicleDataOnTxt(vehicleCreated, dateRequesed, timeRequesed, result);
   return result;
 };
 
