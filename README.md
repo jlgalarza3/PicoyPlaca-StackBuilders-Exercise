@@ -29,7 +29,7 @@ In the figure it can be seen that the Model - View - Controller (MVC) architectu
 - Validated by means of a Switch - Case sentence, in each case (1-5), corresponding to the days of the week.
 - If the last digit of the license plate coincides with the day, it will be validated if the hour is in the interval where the vehicle cannot drive: 07:00 - 9:30 and 16:00 to 18:30.
 - If it coincides with the mentioned time interval, it will return the warning "Can not circulate", otherwise it will return "Can circulate".
-- finally, the results will be saved in a txt file in the form of a log.
+- Finally, the results will be saved in a txt file and so we have a log.
 
 ## 5. How to run this project:question:
 
